@@ -1,11 +1,11 @@
 # GeoPhysique & Environnement — extension QGIS
 
-Version : **0.1.2**.
+Version : **0.1.3**.
 
 **Auteur : Allaye GUINDO.** Cette extension ajoute un panneau QGIS et des raccourcis vers des algorithmes de terrain. Elle constitue un socle de développement, pas encore une suite hydrologique complète validée scientifiquement.
 
 ## Compatibilité
-- QGIS 3.28 à 3.x (déclaré dans `metadata.txt`; tests requis sur la version exacte).
+- QGIS 3.28 à 4.x (déclaré dans `metadata.txt`; tests requis sur la version exacte).
 - Python et PyQt fournis avec QGIS. Ne pas installer un Python externe pour exécuter le plugin.
 - Fournisseurs Processing GDAL et GRASS recommandés.
 

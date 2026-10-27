@@ -62,7 +62,7 @@ class GeoPhysiquePlugin:
     def _build_panel(self):
         self.dock = QDockWidget("GeoPhysique & Environnement", self.iface.mainWindow())
         self.dock.setObjectName("GeoPhysiqueEnvironnementDock")
-        self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
+        self.dock.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea | Qt.DockWidgetArea.RightDockWidgetArea)
         root = QWidget()
         layout = QVBoxLayout(root)
         intro = QLabel(
@@ -119,7 +119,7 @@ class GeoPhysiquePlugin:
         layout.addWidget(self.log)
         layout.addStretch(1)
         self.dock.setWidget(root)
-        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+        self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
 
     def show_about(self):
         QMessageBox.about(

@@ -10,7 +10,7 @@ Depuis QGIS : **Extensions > Installer/Gérer les extensions**, cocher « Affich
 
 Installation manuelle : télécharger le zip de la dernière version dans l'onglet *Releases*, puis **Extensions > Installer depuis un ZIP**.
 
-QGIS 3.28 ou plus récent est requis. Les fournisseurs Processing GDAL et GRASS doivent être activés.
+QGIS 3.28 ou plus récent est requis, QGIS 4 compris. Les fournisseurs Processing GDAL et GRASS doivent être activés.
 
 ## Contenu du dépôt
 
