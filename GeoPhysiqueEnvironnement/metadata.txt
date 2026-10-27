@@ -1,0 +1,26 @@
+[general]
+name=GeoPhysique & Environnement
+description=Boîte à outils scientifique QGIS pour la géographie physique, l'hydrologie et la morphométrie.
+version=0.1.2
+author=Allaye GUINDO
+email=guindo.allaye.contact@gmail.com
+qgisMinimumVersion=3.28
+qgisMaximumVersion=3.99
+category=Analysis
+icon=icons/plugin.svg
+about=Extension QGIS développée par Allaye GUINDO pour les analyses de géographie physique et environnementale, avec des outils de terrain, d'hydrologie et de morphométrie. Un panneau latéral ouvre, sur le MNT choisi, les algorithmes GDAL et GRASS de pente, d'exposition, d'ombrage, de courbes de niveau et d'hydrologie. Les résultats doivent être contrôlés avant interprétation scientifique.
+homepage=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
+repository=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
+tracker=https://github.com/guindoallayecontact7/geophysique-environnement-qgis/issues
+tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,morphometry,geomorphology
+changelog=
+    0.1.2
+    - Icône affichée dans la barre d'outils et le menu.
+    - Nettoyage complet à la désactivation de l'extension.
+    - Version de la boîte « À propos » lue dans metadata.txt.
+    - Correction du nom de l'algorithme GDAL de comblement NoData dans les textes.
+    - Ajout de la licence GPL-2.0 et des liens vers le dépôt et le suivi des bogues.
+    0.1.1
+    - Panneau latéral, détection des rasters, raccourcis vers les algorithmes Processing.
+experimental=True
+deprecated=False
