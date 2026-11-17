@@ -71,7 +71,7 @@ def run(params, ctx, fb):
                 w.writerow([fmt(a["distance"][i], 3), fmt(xs_ok[i], 3), fmt(ys_ok[i], 3), fmt(a["z"][i], 3),
                             fmt(a["slope_pct"][i], 3), fmt(a["curvature"][i], 6), int(a["form"][i]), int(i in br)])
         res.exports.append(base + ".csv")
-        res.charts += charts.profiles([a], base, "{} — {}".format(title, name))
+        res.charts += charts.profiles([a], base, "{} - {}".format(title, name))
         s = a["stats"]
         stat_rows.append([name] + [s.get(key) for key, _, _ in STAT_LABELS])
         line_recs.append((ln["xs"], ln["ys"], {"id": k, "nom": name, "longueur_m": s["longueur_m"],
@@ -81,12 +81,12 @@ def run(params, ctx, fb):
                                                                   "altitude": float(a["z"][i]),
                                                                   "changement_pente_deg": float(a["slope_change_deg"][i])}))
         segs = PR.segments(a["form"], a["distance"])
-        res.add_table(Table("Segments concaves et convexes — {}".format(name),
+        res.add_table(Table("Segments concaves et convexes - {}".format(name),
                             ["Forme", "Début", "Fin", "Longueur"],
                             [[{1: "convexe", -1: "concave", 0: "rectiligne"}[f], d0, d1, d1 - d0] for f, d0, d1 in segs],
                             ["", "m", "m", "m"]))
         if a["breaks"].size:
-            res.add_table(Table("Ruptures de pente — {}".format(name), ["Distance", "Altitude", "Changement de pente"],
+            res.add_table(Table("Ruptures de pente - {}".format(name), ["Distance", "Altitude", "Changement de pente"],
                                 [[float(a["distance"][i]), float(a["z"][i]), float(a["slope_change_deg"][i])]
                                  for i in a["breaks"]], ["m", "m", "°"]))
         fb.progress(10 + 70 * k / max(1, len(p["lines"])))

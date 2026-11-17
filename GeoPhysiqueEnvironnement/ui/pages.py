@@ -45,6 +45,8 @@ class Page(QWidget):
             self.results = ResultsBox(dock, self.module)
             self.lay.addWidget(self.results)
         self.lay.addStretch(1)
+        for b in self.findChildren(QPushButton):
+            b.setMinimumWidth(b.sizeHint().width())
 
     def build(self):
         pass
@@ -86,7 +88,7 @@ class DashboardPage(Page):
     def build(self):
         from ..plugin import plugin_version
         self.lay.addWidget(note(
-            "GeoPhysique & Environnement {} — Allaye GUINDO. Analyses topographiques, morphométriques, "
+            "GeoPhysique & Environnement {} - Allaye GUINDO. Analyses topographiques, morphométriques, "
             "géomorphologiques et hydrologiques à partir d'un MNT projeté en mètres. Sélectionnez le MNT en haut "
             "du panneau, puis une rubrique.".format(plugin_version()), "#333"))
         eng = QGroupBox("Moteurs de calcul disponibles")
@@ -124,11 +126,11 @@ class DashboardPage(Page):
     def refresh(self):
         lines = []
         for label, ok, ver, role in P.python_modules():
-            lines.append("{} <b>{}</b> {} — {}".format("✔" if ok else "✘", label, ver, role))
+            lines.append("{} <b>{}</b> {} - {}".format("✔" if ok else "✘", label, ver, role))
         for label, ok, pid, role in P.processing_providers():
-            lines.append("{} <b>{}</b>{} — {}".format("✔" if ok else "✘", label, " ({})".format(pid) if pid else
+            lines.append("{} <b>{}</b>{} - {}".format("✔" if ok else "✘", label, " ({})".format(pid) if pid else
                                                        " (non activé)", role))
-        lines.append("✔ <b>Moteur natif GeoPhysique</b> — comblement, D8, MFD, D-Infinity, réseau, bassins")
+        lines.append("✔ <b>Moteur natif GeoPhysique</b> - comblement, D8, MFD, D-Infinity, réseau, bassins")
         self.engines.setText("<br/>".join(lines))
         from ..engines.results import Table
         rows = [[r.module_title, r.title, r.created.strftime("%H:%M:%S"), len(r.layers), len(r.tables)]
@@ -178,8 +180,8 @@ class DemPage(Page):
             self.info.setText("Aucun MNT sélectionné.")
             return
         e = lyr.extent()
-        self.info.setText("<b>{}</b><br/>{}<br/>SCR : {} — {} × {} cellules — résolution {:g} × {:g}<br/>"
-                          "Emprise : {:.1f}, {:.1f} – {:.1f}, {:.1f}".format(
+        self.info.setText("<b>{}</b><br/>{}<br/>SCR : {} - {} × {} cellules - résolution {:g} × {:g}<br/>"
+                          "Emprise : {:.1f}, {:.1f} - {:.1f}, {:.1f}".format(
                               lyr.name(), lyr.source(), lyr.crs().authid(), lyr.width(), lyr.height(),
                               lyr.rasterUnitsPerPixelX(), lyr.rasterUnitsPerPixelY(),
                               e.xMinimum(), e.yMinimum(), e.xMaximum(), e.yMaximum()))
@@ -266,7 +268,7 @@ class TopographyPage(Page):
         self.zh = f.row("Seuil des fortes pentes", spin(15, 0, 1000, 1, 1, "%"))
         self.lay.addWidget(f)
         self.run_button("Lancer l'analyse topographique", self.run)
-        self.shortcuts("topographie", "Outils Processing (GDAL) — version 0.1")
+        self.shortcuts("topographie", "Outils Processing (GDAL) - version 0.1")
 
     def run(self):
         p = self.dock.dem_params()
@@ -779,7 +781,7 @@ class CartographyPage(Page):
                    if self.list.item(i).checkState() == Qt.CheckState.Checked}
         self.list.clear()
         for key, title_, ok, hint in self.dock.map_builder.availability():
-            it = QListWidgetItem(title_ if ok else "{} — {}".format(title_, hint))
+            it = QListWidgetItem(title_ if ok else "{} - {}".format(title_, hint))
             it.setData(Qt.ItemDataRole.UserRole, key)
             flags = Qt.ItemFlag.ItemIsUserCheckable
             if ok:
@@ -832,9 +834,9 @@ class StatisticsPage(Page):
         self.res.blockSignals(True)
         self.res.clear()
         for r in self.dock.registry.all():
-            self.res.addItem("{} — {} ({})".format(r.module_title, r.title, r.created.strftime("%H:%M:%S")), r)
+            self.res.addItem("{} - {} ({})".format(r.module_title, r.title, r.created.strftime("%H:%M:%S")), r)
         for t in self.extra:
-            self.res.addItem("Comparaison — {}".format(t.title), t)
+            self.res.addItem("Comparaison - {}".format(t.title), t)
         self.res.blockSignals(False)
         self.res.setCurrentIndex(cur if 0 <= cur < self.res.count() else self.res.count() - 1)
         self.fill_tables()

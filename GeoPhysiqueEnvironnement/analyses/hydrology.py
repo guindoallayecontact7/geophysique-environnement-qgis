@@ -180,7 +180,7 @@ def run(params, ctx, fb):
         cc = np.zeros(la.shape, np.uint8)
         f = np.isfinite(la)
         cc[f] = (np.searchsorted(brk, la[f], side="right") + 1).astype(np.uint8)
-        labels = ["Très faible (< médiane)", "Faible (50–80 %)", "Moyenne (80–95 %)", "Forte (95–99 %)", "Très forte (> 99 %)"]
+        labels = ["Très faible (< médiane)", "Faible (50-80 %)", "Moyenne (80-95 %)", "Forte (95-99 %)", "Très forte (> 99 %)"]
         res.add_table(class_table("Zones de concentration des écoulements", cc, labels, ca))
         pth = write_raster(os.path.join(out, "concentration_ecoulements.tif"), cc, grid, "uint8", 0)
         res.add_layer(LayerSpec(pth, "Potentiel de concentration du ruissellement",
@@ -227,7 +227,7 @@ def run(params, ctx, fb):
         for a, b in zip(bins[:-1], bins[1:]):
             n = int(((sh >= a) & (sh < b)).sum())
             if n:
-                rows.append(["{} – {}".format(a, b - 1) if b < 10 ** 9 else "≥ {}".format(a), n, 100.0 * n / sh.size])
+                rows.append(["{} - {}".format(a, b - 1) if b < 10 ** 9 else "≥ {}".format(a), n, 100.0 * n / sh.size])
         res.add_table(Table("Répartition des magnitudes de Shreve (cellules du réseau)",
                             ["Magnitude", "Cellules du réseau", "Part (%)"], rows))
     res.charts += charts.horton_plot(orders, os.path.join(out, "loi_horton"))

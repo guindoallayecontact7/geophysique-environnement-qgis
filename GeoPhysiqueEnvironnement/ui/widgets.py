@@ -75,6 +75,7 @@ class Form(QGroupBox):
         super().__init__(caption)
         self.lay = QFormLayout(self)
         self.lay.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
+        self.lay.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapLongRows)
 
     def row(self, label, widget, tip=""):
         lab = QLabel(label)
@@ -116,7 +117,7 @@ class ChecksGroup(QGroupBox):
 
 
 class ResultsBox(QGroupBox):
-    """Rubrique « Résultats – Statistiques – Exportation » commune à tous les modules."""
+    """Rubrique « Résultats - Statistiques - Exportation » commune à tous les modules."""
 
     BUTTONS = [
         ("stats", "Afficher les statistiques"), ("txt", "Exporter les statistiques TXT"),
@@ -127,7 +128,7 @@ class ResultsBox(QGroupBox):
     ]
 
     def __init__(self, dock, modules):
-        super().__init__("Résultats – Statistiques – Exportation")
+        super().__init__("Résultats - Statistiques - Exportation")
         self.dock = dock
         self.modules = modules if isinstance(modules, (list, tuple)) else [modules]
         lay = QVBoxLayout(self)
@@ -164,7 +165,7 @@ class ResultsBox(QGroupBox):
         if not enabled:
             self.info.setText("Aucune analyse exécutée dans ce module.")
             return
-        self.info.setText("Dernière analyse : <b>{}</b> ({}) — {} couche(s), {} tableau(x)".format(
+        self.info.setText("Dernière analyse : <b>{}</b> ({}) - {} couche(s), {} tableau(x)".format(
             r.title, r.created.strftime("%d/%m/%Y %H:%M"), len(r.layers), len(r.tables)))
         for spec in r.layers:
             self.map_combo.addItem(spec.name, spec)
@@ -184,7 +185,7 @@ class TableDialog(QDialog):
 
     def __init__(self, result, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Statistiques — {}".format(result.title))
+        self.setWindowTitle("Statistiques - {}".format(result.title))
         self.resize(900, 560)
         lay = QVBoxLayout(self)
         head = QLabel("<b>{}</b><br/>{} · {}".format(result.title, result.module_title,

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""GeoPhysique & Environnement — cycle de vie de l'extension QGIS."""
+"""GeoPhysique & Environnement - cycle de vie de l'extension QGIS."""
 import configparser
 import os
 
@@ -59,13 +59,18 @@ class GeoPhysiquePlugin:
             from .ui.dock import MainDock
             self.dock = MainDock(self.iface, self.iface.mainWindow())
             self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
+            from .ui.dock import PREFERRED_WIDTH
+            try:
+                self.iface.mainWindow().resizeDocks([self.dock], [PREFERRED_WIDTH], Qt.Orientation.Horizontal)
+            except AttributeError:
+                self.dock.resize(PREFERRED_WIDTH, self.dock.height())
         self.dock.show()
         self.dock.raise_()
 
     def show_about(self):
         QMessageBox.about(
             self.iface.mainWindow(),
-            "À propos — GeoPhysique & Environnement",
+            "À propos - GeoPhysique & Environnement",
             "GeoPhysique & Environnement\n"
             "Version {}\n"
             "Auteur : Allaye GUINDO\n\n".format(plugin_version()) +

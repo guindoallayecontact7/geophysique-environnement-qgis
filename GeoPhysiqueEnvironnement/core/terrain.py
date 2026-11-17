@@ -17,8 +17,8 @@ from .grid import fill_nodata_nearest
 
 # Classes de pente FAO (2006), Guidelines for soil description, en %.
 FAO_SLOPE_BREAKS = [2, 5, 10, 15, 30, 60]
-FAO_SLOPE_LABELS = ["Plat (0–2 %)", "Faible (2–5 %)", "Modérée (5–10 %)", "Forte (10–15 %)",
-                    "Modérément raide (15–30 %)", "Raide (30–60 %)", "Très raide (> 60 %)"]
+FAO_SLOPE_LABELS = ["Plat (0-2 %)", "Faible (2-5 %)", "Modérée (5-10 %)", "Forte (10-15 %)",
+                    "Modérément raide (15-30 %)", "Raide (30-60 %)", "Très raide (> 60 %)"]
 
 
 def window_cells(size_m, dx, minimum=3):
@@ -80,7 +80,7 @@ def aspect(z, dx, dy, zfactor=1.0, flat_tol=1e-8):
 
 
 def hillshade(z, dx, dy, azimuth=315.0, altitude=45.0, zfactor=1.0):
-    """Ombrage 0–255 (modèle lambertien, comme gdaldem)."""
+    """Ombrage 0-255 (modèle lambertien, comme gdaldem)."""
     p, q = gradient_horn(z, dx, dy, zfactor)
     return _shade(p, q, azimuth, altitude)
 
@@ -193,7 +193,7 @@ def tpi(z, outer, inner=0):
 
 
 def vrm(z, dx, dy, size=3, zfactor=1.0):
-    """Vector Ruggedness Measure (Sappington et al. 2007), sans unité (0–1)."""
+    """Vector Ruggedness Measure (Sappington et al. 2007), sans unité (0-1)."""
     p, q = gradient_horn(z, dx, dy, zfactor)
     slp = np.arctan(np.hypot(p, q))
     asp = np.arctan2(-p, -q)
@@ -231,7 +231,7 @@ def local_hypsometric_integral(z, size):
 
 
 def dissection_index(z, size):
-    """Indice de dissection (Dov Nir 1957) : (max - min) / max dans la fenêtre (0–1)."""
+    """Indice de dissection (Dov Nir 1957) : (max - min) / max dans la fenêtre (0-1)."""
     zmin, zmax = focal_min(z, size), focal_max(z, size)
     with np.errstate(invalid="ignore", divide="ignore"):
         out = (zmax - zmin) / zmax

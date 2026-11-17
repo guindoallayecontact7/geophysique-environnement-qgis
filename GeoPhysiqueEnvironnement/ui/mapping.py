@@ -233,7 +233,7 @@ class MapBuilder:
             sym = QgsSymbol.defaultSymbol(lyr.geometryType())
             sym.setColor(_qcolor(cols[i]))
             ranges.append(QgsRendererRange(float(brk[i]), float(brk[i + 1]), sym,
-                                           "{} – {}".format(ST.fmt(float(brk[i]), 3), ST.fmt(float(brk[i + 1]), 3))))
+                                           "{} - {}".format(ST.fmt(float(brk[i]), 3), ST.fmt(float(brk[i + 1]), 3))))
         lyr.setRenderer(QgsGraduatedSymbolRenderer(field, ranges))
         self._keep.append(lyr)
         from ..core.morphometry import FIELD_LABELS
@@ -245,7 +245,7 @@ class MapBuilder:
         info = self.info(spec, res)
         info["unites"] = unit
         info["methode"] = "{} : {}".format(lab, formula)
-        return C.MapSpec("parametres", "{} — {}".format(C.MAP_TITLES["parametres"], lab), layers, [lyr],
+        return C.MapSpec("parametres", "{} - {}".format(C.MAP_TITLES["parametres"], lab), layers, [lyr],
                          QgsRectangle(lyr.extent()), info, subtitle=res.title)
 
     # ------------------------------------------------------------------
@@ -369,7 +369,7 @@ def export_all(registry, root, builder=None, map_files=(), with_maps=False, prog
         if specs:
             written += builder.export(specs, os.path.join(base, MODULE_DIRS["cartes"]), "pdf", atlas=True)
     with open(os.path.join(base, "LISEZMOI.txt"), "w", encoding="utf-8") as f:
-        f.write("GeoPhysique & Environnement 2.0 — exportation du {}\n\n".format(
+        f.write("GeoPhysique & Environnement 2.0 - exportation du {}\n\n".format(
             datetime.datetime.now().strftime("%d/%m/%Y %H:%M")))
         f.write("{} analyse(s) exportée(s). Les dossiers des modules non exécutés ne sont pas créés.\n\n".format(len(results)))
         for r in results:

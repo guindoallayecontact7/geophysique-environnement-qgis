@@ -1,6 +1,6 @@
 # GeoPhysique & Environnement 2.0, extension QGIS
 
-Version : **2.0.2**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
+Version : **2.0.3**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
 
 L'extension réalise dans QGIS des analyses topographiques, morphométriques, géomorphologiques et hydrologiques à partir d'un MNT. Elle délimite les bassins et sous-bassins versants, trace des profils, produit des cartes mises en page et exporte ses statistiques.
 
@@ -16,7 +16,7 @@ Depuis QGIS : **Extensions > Installer depuis un ZIP**, puis ouvrir **Extensions
 
 ## Utilisation
 
-Choisir le MNT en haut du panneau. Il doit être dans un SCR projeté en mètres ; sinon, la rubrique « Gestion des MNT » le reprojette en UTM. Chaque rubrique lance son calcul en tâche de fond, ajoute les couches stylées au projet dans le groupe « GeoPhysique & Environnement 2.0 » et propose la zone « Résultats – Statistiques – Exportation ».
+Choisir le MNT en haut du panneau. Il doit être dans un SCR projeté en mètres ; sinon, la rubrique « Gestion des MNT » le reprojette en UTM. Chaque rubrique lance son calcul en tâche de fond, ajoute les couches stylées au projet dans le groupe « GeoPhysique & Environnement 2.0 » et propose la zone « Résultats - Statistiques - Exportation ».
 
 | Rubrique | Contenu |
 |---|---|

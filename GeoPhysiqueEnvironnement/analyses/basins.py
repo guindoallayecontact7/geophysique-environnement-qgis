@@ -449,7 +449,7 @@ def run_subbasins(params, ctx, fb):
                           "conforme" if sum(1 for d in downstream.values() if d == 0) == 1 else "à vérifier"]]))
     res.add_table(_wide_table("Tableau comparatif des sous-bassins", rows, ("parent", "aval", "ordre")))
     res.add_table(Table("Relations amont-aval", ["Sous-bassin", "Aval", "Amont", "Ordre de Strahler à l'exutoire"],
-                        [[i, downstream[i] or "exutoire", ",".join(str(u) for u in sorted(upstream[i])) or "—",
+                        [[i, downstream[i] or "exutoire", ",".join(str(u) for u in sorted(upstream[i])) or "-",
                           int(net.strahler[outlets[i]])] for i in ids]))
     res.add_table(definitions_table())
     res.add_summary("Nombre de sous-bassins", len(ids), "")

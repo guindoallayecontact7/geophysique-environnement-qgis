@@ -24,6 +24,8 @@ from .tasks import JobTask
 from .widgets import TableDialog
 
 SETTINGS_PREFIX = "GeoPhysiqueEnvironnement/"
+MIN_WIDTH = 760       # en dessous, certaines rubriques défilent horizontalement
+PREFERRED_WIDTH = 820  # largeur à l'ouverture
 DEFAULT_SETTINGS = {
     "workspace": os.path.join(os.path.expanduser("~"), "GeoPhysique_Environnement"),
     "csv_separator": ";", "decimal": ",", "precision": 4, "source": "", "author": "",
@@ -55,6 +57,7 @@ class MainDock(QDockWidget):
         super().__init__("GeoPhysique & Environnement 2.0", parent)
         self.setObjectName("GeoPhysiqueEnvironnementDock")
         self.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea | Qt.DockWidgetArea.RightDockWidgetArea)
+        self.setMinimumWidth(MIN_WIDTH)
         self.iface = iface
         self.settings = load_settings()
         self.registry = ResultRegistry()
@@ -152,10 +155,10 @@ class MainDock(QDockWidget):
         else:
             crs = layer.crs()
             geo = crs.isGeographic()
-            self.dem_state.setText("{} — {} — {:g} m — {} × {}{}".format(
+            self.dem_state.setText("{} - {} - {:g} m - {} × {}{}".format(
                 layer.name(), crs.authid() or "SCR inconnu", layer.rasterUnitsPerPixelX(), layer.width(),
                 layer.height(),
-                " — <span style='color:#b2182b'>SCR géographique : reprojetez (Gestion des MNT)</span>" if geo else ""))
+                " - <span style='color:#b2182b'>SCR géographique : reprojetez (Gestion des MNT)</span>" if geo else ""))
         for p in self.pages.values():
             p.on_dem_changed()
 
@@ -273,7 +276,7 @@ class MainDock(QDockWidget):
             self.log("✘ {} : {}".format(description, msg))
             self.iface.messageBar().pushCritical("GeoPhysique", "{} : {}".format(description, first))
 
-        self.task = JobTask("GeoPhysique — " + description, fn, params, self.ctx, done, failed)
+        self.task = JobTask("GeoPhysique - " + description, fn, params, self.ctx, done, failed)
         self.task.progressChanged.connect(lambda v: self.progress.setValue(int(v)))
         self.task.message.connect(self.log)
         self._busy(True)

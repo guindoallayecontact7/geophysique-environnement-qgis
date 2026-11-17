@@ -67,7 +67,7 @@ def run(params, ctx, fb):
     if "hypso" in prods or "stats" in prods:
         brk = T.class_breaks(z, int(p["hypso_n"]), p["hypso_method"])
         cls = T.classify(z, brk)
-        labels = ["{:.0f} – {:.0f} m".format(brk[i], brk[i + 1]) for i in range(len(brk) - 1)]
+        labels = ["{:.0f} - {:.0f} m".format(brk[i], brk[i + 1]) for i in range(len(brk) - 1)]
         tab = class_table("Distribution des classes altimétriques", cls, labels, ca)
         tab.note = "Classes {} ({} classes).".format(
             "d'effectifs égaux (quantiles)" if p["hypso_method"] == "quantile" else "d'amplitude égale",
@@ -109,7 +109,7 @@ def run(params, ctx, fb):
             brk = [float(b) for b in p["slope_breaks"]]
             cls = T.classify_open(slp_pct, brk)
             labels = (["< {:g} %".format(brk[0])]
-                      + ["{:g} – {:g} %".format(brk[i], brk[i + 1]) for i in range(len(brk) - 1)]
+                      + ["{:g} - {:g} %".format(brk[i], brk[i + 1]) for i in range(len(brk) - 1)]
                       + ["> {:g} %".format(brk[-1])])
             if brk == [float(x) for x in T.FAO_SLOPE_BREAKS]:
                 labels = list(T.FAO_SLOPE_LABELS)
@@ -127,7 +127,7 @@ def run(params, ctx, fb):
         if "slope_zones" in prods:
             lo, hi_ = float(p["zone_low"]), float(p["zone_high"])
             zones = T.classify_open(slp_pct, [lo, hi_])
-            labels = ["Faibles pentes (< {:g} %)".format(lo), "Pentes moyennes ({:g} – {:g} %)".format(lo, hi_),
+            labels = ["Faibles pentes (< {:g} %)".format(lo), "Pentes moyennes ({:g} - {:g} %)".format(lo, hi_),
                       "Fortes pentes (> {:g} %)".format(hi_)]
             res.add_table(class_table("Zones de fortes et faibles pentes", zones, labels, ca))
             pth = write_raster(os.path.join(out, "zones_pentes.tif"), zones, grid, "uint8", 0)

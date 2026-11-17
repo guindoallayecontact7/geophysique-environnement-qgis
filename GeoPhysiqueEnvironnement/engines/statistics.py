@@ -138,7 +138,7 @@ def result_text(result):
     """Contenu du fichier TXT d'une analyse."""
     L = []
     bar = "=" * 78
-    L += [bar, "{} — {}".format(APP_NAME, result.title), bar]
+    L += [bar, "{} - {}".format(APP_NAME, result.title), bar]
     L.append("Module            : {}".format(result.module_title))
     L.append("Date de traitement: {}".format(result.created.strftime("%d/%m/%Y %H:%M")))
     L.append("Auteur du logiciel: {}".format(AUTHOR))

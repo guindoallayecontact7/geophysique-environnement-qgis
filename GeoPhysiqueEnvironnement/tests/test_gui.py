@@ -141,7 +141,7 @@ def main():
     n_layers = len(QgsProject.instance().mapLayers())
     print("Couches dans le projet :", n_layers)
 
-    # rubrique Résultats – Statistiques – Exportation de chaque module
+    # rubrique Résultats - Statistiques - Exportation de chaque module
     for key in ("topo", "hydro", "morpho", "geomorph", "bassins", "sous_bassins", "profils"):
         box = pages[key].results
         box.refresh()

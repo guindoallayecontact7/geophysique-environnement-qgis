@@ -22,7 +22,7 @@ class ProfileDialog(QDialog):
     def __init__(self, dock):
         super().__init__(dock)
         self.dock = dock
-        self.setWindowTitle("Profils topographiques — GeoPhysique & Environnement 2.0")
+        self.setWindowTitle("Profils topographiques - GeoPhysique & Environnement 2.0")
         self.resize(1050, 640)
         lay = QHBoxLayout(self)
         left = QVBoxLayout()
@@ -121,7 +121,7 @@ class ProfileDialog(QDialog):
         txt = []
         for p in sel:
             s = p["stats"]
-            txt.append("<b>{}</b> : longueur {:.0f} m, z {:.1f}–{:.1f} m, pente moyenne {:.2f} %, convexe {:.0f} %, "
+            txt.append("<b>{}</b> : longueur {:.0f} m, z {:.1f}-{:.1f} m, pente moyenne {:.2f} %, convexe {:.0f} %, "
                        "concave {:.0f} %, {} rupture(s)".format(p["name"], s["longueur_m"], s["z_min"], s["z_max"],
                                                                 s["pente_moy_pct"], s["part_convexe_pct"],
                                                                 s["part_concave_pct"], s["nb_ruptures"]).replace(".", ","))

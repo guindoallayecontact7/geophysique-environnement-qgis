@@ -183,7 +183,7 @@ def _vector(layer, style):
             sym = QgsSymbol.defaultSymbol(gtype)
             sym.setColor(_qcolor(cols[i]))
             sym.setWidth(0.2 + 0.3 * i)
-            lab = "{} {}–{}".format(style.get("label", ""), a, b - 1) if b < 10 ** 9 else "{} ≥ {}".format(style.get("label", ""), a)
+            lab = "{} {}-{}".format(style.get("label", ""), a, b - 1) if b < 10 ** 9 else "{} ≥ {}".format(style.get("label", ""), a)
             ranges.append(QgsRendererRange(a - 0.5, b - 0.5, sym, lab.strip()))
         layer.setRenderer(QgsGraduatedSymbolRenderer(field, ranges))
     elif t == "categories":
