@@ -35,7 +35,7 @@ class Context:
     """Espace de travail, cache des MNT et de l'état hydrologique."""
 
     def __init__(self, workspace=None):
-        self.workspace = workspace or os.path.join(tempfile.gettempdir(), "GeoPhysique_travail")
+        self.workspace = workspace or os.path.join(tempfile.gettempdir(), "TerraMorpho_travail")
         self._grid_key = None
         self._grid = None
         self.hydro = None

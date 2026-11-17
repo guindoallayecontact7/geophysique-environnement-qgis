@@ -1,6 +1,10 @@
-# GeoPhysique & Environnement 2.0, extension QGIS
+# TERRA-MORPHO GIS, extension QGIS
 
-Version : **2.0.4**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
+![TERRA-MORPHO GIS](icons/logo.png)
+
+Anciennement GeoPhysique & Environnement.
+
+Version : **2.1.0**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
 
 L'extension réalise dans QGIS des analyses topographiques, morphométriques, géomorphologiques et hydrologiques à partir d'un MNT. Elle délimite les bassins et sous-bassins versants, trace des profils, produit des cartes mises en page et exporte ses statistiques.
 
@@ -12,11 +16,11 @@ L'extension réalise dans QGIS des analyses topographiques, morphométriques, g�
 
 ## Installation
 
-Depuis QGIS : **Extensions > Installer depuis un ZIP**, puis ouvrir **Extensions > GeoPhysique > GeoPhysique & Environnement** ou cliquer sur l'icône de la barre d'outils.
+Depuis QGIS : **Extensions > Installer depuis un ZIP**, puis ouvrir **Extensions > TERRA-MORPHO GIS > TERRA-MORPHO GIS** ou cliquer sur l'icône de la barre d'outils.
 
 ## Utilisation
 
-Choisir le MNT en haut du panneau. Il doit être dans un SCR projeté en mètres ; sinon, la rubrique « Gestion des MNT » le reprojette en UTM. Chaque rubrique lance son calcul en tâche de fond, ajoute les couches stylées au projet dans le groupe « GeoPhysique & Environnement 2.0 » et propose la zone « Résultats - Statistiques - Exportation ».
+Choisir le MNT en haut du panneau. Il doit être dans un SCR projeté en mètres ; sinon, la rubrique « Gestion des MNT » le reprojette en UTM. Chaque rubrique lance son calcul en tâche de fond, ajoute les couches stylées au projet dans le groupe « TERRA-MORPHO GIS » et propose la zone « Résultats - Statistiques - Exportation ».
 
 | Rubrique | Contenu |
 |---|---|

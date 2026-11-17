@@ -255,7 +255,7 @@ class MapBuilder:
         out = []
         stamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         if atlas and len(specs) > 1:
-            layout = C.build_layout(specs, name or "Atlas GeoPhysique {}".format(stamp))
+            layout = C.build_layout(specs, name or "Atlas TERRA-MORPHO {}".format(stamp))
             path = os.path.join(folder, "atlas_{}.pdf".format(stamp))
             C.export_layout(layout, path, "pdf", dpi)
             out.append(path)
@@ -321,8 +321,8 @@ def export_result_bundle(result, folder, builder=None, with_maps=True, dpi=150):
 
 
 def export_all(registry, root, builder=None, map_files=(), with_maps=False, progress=None):
-    """Exportation globale vers root/GeoPhysique_Export/ (dossiers vides non créés)."""
-    base = os.path.join(root, "GeoPhysique_Export")
+    """Exportation globale vers root/TerraMorpho_Export/ (dossiers vides non créés)."""
+    base = os.path.join(root, "TerraMorpho_Export")
     if os.path.exists(base):
         base = base + "_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     results = registry.all()
@@ -369,7 +369,7 @@ def export_all(registry, root, builder=None, map_files=(), with_maps=False, prog
         if specs:
             written += builder.export(specs, os.path.join(base, MODULE_DIRS["cartes"]), "pdf", atlas=True)
     with open(os.path.join(base, "LISEZMOI.txt"), "w", encoding="utf-8") as f:
-        f.write("GeoPhysique & Environnement 2.0 - exportation du {}\n\n".format(
+        f.write("TERRA-MORPHO GIS - exportation du {}\n\n".format(
             datetime.datetime.now().strftime("%d/%m/%Y %H:%M")))
         f.write("{} analyse(s) exportée(s). Les dossiers des modules non exécutés ne sont pas créés.\n\n".format(len(results)))
         for r in results:

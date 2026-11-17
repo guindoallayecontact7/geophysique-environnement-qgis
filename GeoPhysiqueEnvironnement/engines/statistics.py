@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""GeoPhysique Statistics Engine.
+"""TERRA-MORPHO Statistics Engine.
 
 Statistiques descriptives, répartitions par classe, comparaisons de zones et
 exportations TXT, CSV et XLSX communes à tous les modules. Sans dépendance
@@ -16,7 +16,7 @@ import numpy as np
 
 from .results import Table, MODULE_DIRS, slugify
 
-APP_NAME = "GeoPhysique & Environnement 2.0"
+APP_NAME = "TERRA-MORPHO GIS"
 AUTHOR = "Allaye GUINDO"
 
 

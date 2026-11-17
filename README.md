@@ -1,12 +1,16 @@
-# GeoPhysique & Environnement (extension QGIS)
+# TERRA-MORPHO GIS (extension QGIS)
 
-Extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie (version 2.0). À partir d'un MNT, elle calcule les produits topographiques, morphométriques et géomorphologiques, route les écoulements (D8, MFD, D-Infinity), délimite bassins et sous-bassins avec leurs paramètres morphométriques, trace des profils et exporte cartes et statistiques. Le détail des rubriques est dans le [README de l'extension](GeoPhysiqueEnvironnement/README.md) et les formules dans [docs/METHODES.md](GeoPhysiqueEnvironnement/docs/METHODES.md).
+![TERRA-MORPHO GIS](GeoPhysiqueEnvironnement/icons/logo.png)
+
+Anciennement GeoPhysique & Environnement.
+
+TERRA-MORPHO GIS, extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie. À partir d'un MNT, elle calcule les produits topographiques, morphométriques et géomorphologiques, route les écoulements (D8, MFD, D-Infinity), délimite bassins et sous-bassins avec leurs paramètres morphométriques, trace des profils et exporte cartes et statistiques. Le détail des rubriques est dans le [README de l'extension](GeoPhysiqueEnvironnement/README.md) et les formules dans [docs/METHODES.md](GeoPhysiqueEnvironnement/docs/METHODES.md).
 
 Contrôlez les résultats avant toute interprétation scientifique.
 
 ## Installation
 
-Depuis QGIS : **Extensions > Installer/Gérer les extensions** puis chercher « GeoPhysique ».
+Depuis QGIS : **Extensions > Installer/Gérer les extensions** puis chercher « TERRA-MORPHO ».
 
 Installation manuelle : télécharger le zip de la dernière version dans l'onglet *Releases*, puis **Extensions > Installer depuis un ZIP**.
 

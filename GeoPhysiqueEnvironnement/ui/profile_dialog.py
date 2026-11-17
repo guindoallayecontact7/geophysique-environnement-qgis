@@ -22,7 +22,7 @@ class ProfileDialog(QDialog):
     def __init__(self, dock):
         super().__init__(dock)
         self.dock = dock
-        self.setWindowTitle("Profils topographiques - GeoPhysique & Environnement 2.0")
+        self.setWindowTitle("Profils topographiques - TERRA-MORPHO GIS")
         self.resize(1050, 640)
         lay = QHBoxLayout(self)
         left = QVBoxLayout()
