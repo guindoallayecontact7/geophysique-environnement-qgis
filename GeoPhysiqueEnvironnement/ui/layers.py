@@ -6,7 +6,7 @@ from qgis.core import QgsProject, QgsRasterLayer, QgsVectorLayer
 
 from ..engines.styles import apply_style
 
-ROOT_GROUP = "TERRA-MORPHO GIS"
+ROOT_GROUP = "TGS - TerraGeo Science"
 
 
 def _group(parent, name):

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""TERRA-MORPHO Cartographic Engine.
+"""TGS Cartographic Engine.
 
 Mises en page QGIS (A4 paysage) avec titre, carte, légende, échelle
 graphique, flèche du nord, système de coordonnées, sources, résolution,
@@ -232,7 +232,7 @@ def _add_page(layout, spec, page, project):
         if info.get(key):
             lines.append("{} : {}".format(label, info[key]))
     lines.append("Date de traitement : {}".format(info.get("date") or datetime.date.today().strftime("%d/%m/%Y")))
-    lines.append("Réalisation : {}".format(info.get("auteur") or "TERRA-MORPHO GIS (Allaye GUINDO)"))
+    lines.append("Réalisation : {}".format(info.get("auteur") or "TGS - TerraGeo Science (Allaye GUINDO)"))
     if info.get("note"):
         lines.append(info["note"])
     _label(layout, "\n".join(lines), MAP_X, MAP_Y + MAP_H + 2, MAP_W, PAGE_H - (MAP_Y + MAP_H + 2) - 4,

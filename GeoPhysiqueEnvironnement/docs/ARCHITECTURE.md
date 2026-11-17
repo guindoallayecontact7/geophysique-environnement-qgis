@@ -16,7 +16,7 @@ GeoPhysiqueEnvironnement/
 │   └── topography.py, morphometry_indices.py, geomorphology.py, hydrology.py, basins.py, profiles.py
 ├── engines/                    moteurs communs à tous les modules
 │   ├── results.py              AnalysisResult, Table, LayerSpec, registre de session
-│   ├── statistics.py           TERRA-MORPHO Statistics Engine : statistiques, TXT, CSV, XLSX
+│   ├── statistics.py           Statistics Engine : statistiques, TXT, CSV, XLSX
 │   ├── charts.py               graphiques Matplotlib (Agg)
 │   ├── styles.py               styles décrits en dict, appliqués aux couches QGIS
 │   ├── cartography.py          Cartographic Engine : mises en page, export, atlas

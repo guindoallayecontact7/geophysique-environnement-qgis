@@ -27,7 +27,7 @@ SETTINGS_PREFIX = "GeoPhysiqueEnvironnement/"
 MIN_WIDTH = 760       # en dessous, certaines rubriques défilent horizontalement
 PREFERRED_WIDTH = 820  # largeur à l'ouverture
 DEFAULT_SETTINGS = {
-    "workspace": os.path.join(os.path.expanduser("~"), "TerraMorphoGIS"),
+    "workspace": os.path.join(os.path.expanduser("~"), "GeoPhysique_Environnement"),
     "csv_separator": ";", "decimal": ",", "precision": 4, "source": "", "author": "",
 }
 
@@ -54,8 +54,8 @@ def save_settings(s):
 
 class MainDock(QDockWidget):
     def __init__(self, iface, parent=None):
-        super().__init__("TERRA-MORPHO GIS", parent)
-        self.setObjectName("GeoPhysiqueEnvironnementDock")
+        super().__init__("TGS - TerraGeo Science", parent)
+        self.setObjectName("TGSTerraGeoScienceDock")
         self.setAllowedAreas(Qt.DockWidgetArea.LeftDockWidgetArea | Qt.DockWidgetArea.RightDockWidgetArea)
         self.setMinimumWidth(MIN_WIDTH)
         self.iface = iface
@@ -175,7 +175,7 @@ class MainDock(QDockWidget):
         try:
             os.makedirs(ws, exist_ok=True)
         except OSError:
-            ws = os.path.join(tempfile.gettempdir(), "TerraMorphoGIS")
+            ws = os.path.join(tempfile.gettempdir(), "GeoPhysique_Environnement")
             os.makedirs(ws, exist_ok=True)
         self.ctx.workspace = ws
         if save:
@@ -187,14 +187,14 @@ class MainDock(QDockWidget):
 
     def warn(self, text):
         self.log("⚠ " + text)
-        self.iface.messageBar().pushWarning("TERRA-MORPHO GIS", text)
+        self.iface.messageBar().pushWarning("TGS", text)
 
     def done_files(self, files):
         files = [f for f in files if f]
         if not files:
             return
         self.log("{} fichier(s) écrit(s) dans {}".format(len(files), os.path.dirname(files[0])))
-        self.iface.messageBar().pushSuccess("TERRA-MORPHO GIS", "{} fichier(s) exporté(s) : {}".format(
+        self.iface.messageBar().pushSuccess("TGS", "{} fichier(s) exporté(s) : {}".format(
             len(files), os.path.dirname(files[0])))
 
     # ------------------------------------------------------------------ MNT
@@ -249,7 +249,7 @@ class MainDock(QDockWidget):
             self.log("✔ {} terminée : {} couche(s) ajoutée(s), dossier {}".format(result.title, n, result.folder))
             for w in result.warnings:
                 self.log("⚠ " + w)
-            self.iface.messageBar().pushSuccess("TERRA-MORPHO GIS", "{} terminée.".format(result.title))
+            self.iface.messageBar().pushSuccess("TGS", "{} terminée.".format(result.title))
             if after:
                 after(result)
         self._start(description, fn, params, done)
@@ -274,9 +274,9 @@ class MainDock(QDockWidget):
                 return
             first = msg.strip().splitlines()[0] if msg else "Erreur"
             self.log("✘ {} : {}".format(description, msg))
-            self.iface.messageBar().pushCritical("TERRA-MORPHO GIS", "{} : {}".format(description, first))
+            self.iface.messageBar().pushCritical("TGS", "{} : {}".format(description, first))
 
-        self.task = JobTask("TERRA-MORPHO - " + description, fn, params, self.ctx, done, failed)
+        self.task = JobTask("TGS - " + description, fn, params, self.ctx, done, failed)
         self.task.progressChanged.connect(lambda v: self.progress.setValue(int(v)))
         self.task.message.connect(self.log)
         self._busy(True)
@@ -462,7 +462,7 @@ class MainDock(QDockWidget):
             QApplication.restoreOverrideCursor()
             self.progress.setValue(0)
         self.log("Exportation globale : {} fichier(s) dans {}".format(len(files), base))
-        self.iface.messageBar().pushSuccess("TERRA-MORPHO GIS", "Exportation globale : {}".format(base))
+        self.iface.messageBar().pushSuccess("TGS", "Exportation globale : {}".format(base))
 
     # ------------------------------------------------------------------ profils
     def open_profile_dialog(self):

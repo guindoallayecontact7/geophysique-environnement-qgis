@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""TERRA-MORPHO GIS - cycle de vie de l'extension QGIS."""
+"""TGS - TerraGeo Science - cycle de vie de l'extension QGIS."""
 import configparser
 import os
 
 from qgis.PyQt.QtCore import Qt
-from qgis.PyQt.QtGui import QIcon, QPixmap
+from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QMessageBox
 
 PLUGIN_DIR = os.path.dirname(__file__)
-MENU = "&TERRA-MORPHO GIS"
+MENU = "&TGS - TerraGeo Science"
 
 
 def plugin_version():
@@ -19,7 +19,7 @@ def plugin_version():
 
 
 class GeoPhysiquePlugin:
-    """Ajoute le panneau TERRA-MORPHO GIS (rubriques d'analyse)."""
+    """Ajoute le panneau TGS - TerraGeo Science (rubriques d'analyse)."""
 
     def __init__(self, iface):
         self.iface = iface
@@ -29,10 +29,10 @@ class GeoPhysiquePlugin:
 
     def initGui(self):
         icon = QIcon(os.path.join(PLUGIN_DIR, "icons", "plugin.png"))
-        self.action = QAction(icon, "TERRA-MORPHO GIS", self.iface.mainWindow())
+        self.action = QAction(icon, "TGS - TerraGeo Science", self.iface.mainWindow())
         self.action.setToolTip("Analyses topographiques, morphométriques, géomorphologiques et hydrologiques")
         self.action.triggered.connect(self.show_panel)
-        self.about_action = QAction("À propos de TERRA-MORPHO GIS", self.iface.mainWindow())
+        self.about_action = QAction("À propos de TGS - TerraGeo Science", self.iface.mainWindow())
         self.about_action.triggered.connect(self.show_about)
         self.iface.addPluginToMenu(MENU, self.action)
         self.iface.addPluginToMenu(MENU, self.about_action)
@@ -68,17 +68,14 @@ class GeoPhysiquePlugin:
         self.dock.raise_()
 
     def show_about(self):
-        box = QMessageBox(self.iface.mainWindow())
-        box.setWindowTitle("À propos - TERRA-MORPHO GIS")
-        logo = QPixmap(os.path.join(PLUGIN_DIR, "icons", "logo.png"))
-        if not logo.isNull():
-            box.setIconPixmap(logo.scaledToWidth(360, Qt.TransformationMode.SmoothTransformation))
-        box.setText(
-            "<b>TERRA-MORPHO GIS</b><br/>Version {}<br/>Auteur : Allaye GUINDO<br/><br/>"
+        QMessageBox.about(
+            self.iface.mainWindow(),
+            "À propos - TGS - TerraGeo Science",
+            "TGS - TerraGeo Science\n(Terrain • Hydrology • Geomorphology)\n"
+            "Version {}\n"
+            "Auteur : Allaye GUINDO\n\n".format(plugin_version()) +
             "Extension QGIS dédiée à la géographie physique et à l'environnement : analyses "
             "topographiques, morphométriques, géomorphologiques et hydrologiques, délimitation "
-            "des bassins et sous-bassins versants, profils, cartographie et statistiques.<br/><br/>"
-            "Anciennement GeoPhysique &amp; Environnement. Licence GPL-2.0 ou ultérieure.".format(plugin_version()))
-        box.setStandardButtons(QMessageBox.StandardButton.Ok)
-        box.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
-        box.open()
+            "des bassins et sous-bassins versants, profils, cartographie et statistiques.\n\n"
+            "Licence GPL-2.0 ou ultérieure."
+        )

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Rubriques du panneau TERRA-MORPHO GIS."""
+"""Rubriques du panneau TGS - TerraGeo Science."""
 import os
 
 from qgis.PyQt.QtCore import Qt
@@ -86,16 +86,9 @@ class DashboardPage(Page):
     key, caption = "dashboard", "Tableau de bord"
 
     def build(self):
-        from ..plugin import plugin_version, PLUGIN_DIR
-        from qgis.PyQt.QtGui import QPixmap
-        logo = QPixmap(os.path.join(PLUGIN_DIR, "icons", "logo.png"))
-        if not logo.isNull():
-            lab = QLabel()
-            lab.setPixmap(logo.scaledToWidth(380, Qt.TransformationMode.SmoothTransformation))
-            lab.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            self.lay.addWidget(lab)
+        from ..plugin import plugin_version
         self.lay.addWidget(note(
-            "TERRA-MORPHO GIS {} - Allaye GUINDO. Analyses topographiques, morphométriques, "
+            "TGS - TerraGeo Science {} - Allaye GUINDO. Analyses topographiques, morphométriques, "
             "géomorphologiques et hydrologiques à partir d'un MNT projeté en mètres. Sélectionnez le MNT en haut "
             "du panneau, puis une rubrique.".format(plugin_version()), "#333"))
         eng = QGroupBox("Moteurs de calcul disponibles")
@@ -123,7 +116,7 @@ class DashboardPage(Page):
         big = QPushButton("EXPORTER TOUTES LES ANALYSES")
         big.setStyleSheet("QPushButton{background:#b35806;color:white;font-weight:bold;padding:8px;font-size:10.5pt;}")
         big.setToolTip("Regroupe couches, statistiques (TXT, CSV, Excel), fiches PDF, graphiques et cartes dans "
-                       "TerraMorpho_Export/, un dossier par module exécuté.")
+                       "GeoPhysique_Export/, un dossier par module exécuté.")
         big.clicked.connect(self.dock.export_everything)
         self.lay.addWidget(big)
         self.maps_too = check("Inclure un atlas PDF de toutes les cartes disponibles", False)
@@ -137,7 +130,7 @@ class DashboardPage(Page):
         for label, ok, pid, role in P.processing_providers():
             lines.append("{} <b>{}</b>{} - {}".format("✔" if ok else "✘", label, " ({})".format(pid) if pid else
                                                        " (non activé)", role))
-        lines.append("✔ <b>Moteur natif TERRA-MORPHO</b> - comblement, D8, MFD, D-Infinity, réseau, bassins")
+        lines.append("✔ <b>Moteur natif TGS</b> - comblement, D8, MFD, D-Infinity, réseau, bassins")
         self.engines.setText("<br/>".join(lines))
         from ..engines.results import Table
         rows = [[r.module_title, r.title, r.created.strftime("%H:%M:%S"), len(r.layers), len(r.tables)]
@@ -943,7 +936,7 @@ class SettingsPage(Page):
         self.src = g.row("Sources des données (cartes)", QLineEdit(s.get("source", "")),
                          "Vide = nom du fichier MNT. Exemple : Copernicus DEM GLO-30, ESA")
         self.auth = g.row("Réalisation (cartes)", QLineEdit(s.get("author", "")),
-                          "Vide = TERRA-MORPHO GIS (Allaye GUINDO)")
+                          "Vide = TGS - TerraGeo Science (Allaye GUINDO)")
         self.lay.addWidget(g)
         for w, key in ((self.sep, "csv_separator"), (self.dec, "decimal")):
             i = w.findData(s.get(key))

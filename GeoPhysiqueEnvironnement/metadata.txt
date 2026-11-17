@@ -1,22 +1,28 @@
 [general]
-name=TERRA-MORPHO GIS
+name=TGS - TerraGeo Science
 description=Analyses topographiques, morphométriques, géomorphologiques et hydrologiques dans QGIS : bassins et sous-bassins versants, profils, cartes et statistiques.
-version=2.1.0
+version=2.1.1
 author=Allaye GUINDO
 email=guindo.allaye.contact@gmail.com
 qgisMinimumVersion=3.34
 qgisMaximumVersion=4.99
 category=Analysis
 icon=icons/plugin.png
-about=TERRA-MORPHO GIS (anciennement GeoPhysique & Environnement) : extension QGIS d'Allaye GUINDO pour la géographie physique et l'environnement. À partir d'un MNT projeté, elle calcule pentes, expositions, ombrages, courbes de niveau, classes hypsométriques, courbures, indices TPI, TRI, VRM, TWI, SPI et LS, unités géomorphologiques (Weiss, Wood), comblement des dépressions, directions D8, MFD et D-Infinity, réseau hydrographique (Strahler, Shreve), bassins versants depuis un exutoire ou automatiquement, sous-bassins et paramètres morphométriques. Elle produit aussi des profils, des cartes mises en page et des statistiques exportables (TXT, CSV, Excel, PDF). Les calculs tournent en tâche de fond avec NumPy et SciPy fournis avec QGIS ; GRASS, SAGA et WhiteboxTools restent accessibles par raccourcis. Les résultats doivent être contrôlés avant interprétation scientifique.
+about=Extension QGIS d'Allaye GUINDO pour la géographie physique et l'environnement. À partir d'un MNT projeté, elle calcule pentes, expositions, ombrages, courbes de niveau, classes hypsométriques, courbures, indices TPI, TRI, VRM, TWI, SPI et LS, unités géomorphologiques (Weiss, Wood), comblement des dépressions, directions D8, MFD et D-Infinity, réseau hydrographique (Strahler, Shreve), bassins versants depuis un exutoire ou automatiquement, sous-bassins et paramètres morphométriques. Elle produit aussi des profils, des cartes mises en page et des statistiques exportables (TXT, CSV, Excel, PDF). Les calculs tournent en tâche de fond avec NumPy et SciPy fournis avec QGIS ; GRASS, SAGA et WhiteboxTools restent accessibles par raccourcis. Les résultats doivent être contrôlés avant interprétation scientifique.
 homepage=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 repository=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 tracker=https://github.com/guindoallayecontact7/geophysique-environnement-qgis/issues
 tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,catchment,morphometry,geomorphology,curvature,twi,strahler,profile
 changelog=
+    2.1.1
+    - Identité courte TGS et nom complet TerraGeo Science dans QGIS.
+    - Icône applicative TGS redessinée en SVG et PNG haute résolution.
+    - Harmonisation des libellés, groupes de couches et exports.
+    - Conservation du dossier technique et de l’espace de paramètres historiques.
     2.1.0
-    - Nouveau nom : TERRA-MORPHO GIS (anciennement GeoPhysique & Environnement) et nouveau logo.
-    - Exportation globale dans TerraMorpho_Export/ ; espace de travail par défaut ~/TerraMorphoGIS.
+    - Identité de marque TGS - TerraGeo Science : icône, menus, panneau et exports harmonisés.
+    - Conservation de l’identifiant technique historique pour faciliter les mises à jour.
+    - Aucun changement volontaire des algorithmes et paramètres de calcul.
     2.0.4
     - Compatibilité Qt6 / QGIS 4 : placement des étiquettes et type de géométrie par les énumérations Qgis ; retrait de supportsQt6, obsolète.
     2.0.3
