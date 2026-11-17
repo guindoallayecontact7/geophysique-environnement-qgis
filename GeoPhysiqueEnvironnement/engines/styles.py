@@ -155,8 +155,8 @@ def _raster_gray(layer, style):
 def _vector(layer, style):
     from qgis.core import (QgsGraduatedSymbolRenderer, QgsRendererRange, QgsSymbol,
                            QgsCategorizedSymbolRenderer, QgsRendererCategory, QgsRuleBasedRenderer,
-                           QgsWkbTypes, QgsPalLayerSettings, QgsVectorLayerSimpleLabeling,
-                           QgsTextFormat)
+                           QgsPalLayerSettings, QgsVectorLayerSimpleLabeling,
+                           QgsTextFormat, Qgis)
     t = style.get("type")
     gtype = layer.geometryType()
     if t == "streams":
@@ -199,7 +199,7 @@ def _vector(layer, style):
             c = _qcolor(cols[order[k] % len(cols)])
             c.setAlpha(150)
             sym.setColor(c)
-            if gtype == QgsWkbTypes.GeometryType.PolygonGeometry:
+            if gtype == Qgis.GeometryType.Polygon:
                 sym.symbolLayer(0).setStrokeColor(_qcolor("#222222"))
                 sym.symbolLayer(0).setStrokeWidth(0.4)
             cats.append(QgsRendererCategory(v, sym, "{} {}".format(style.get("label", ""), v).strip()))
@@ -233,10 +233,7 @@ def _vector(layer, style):
         pal = QgsPalLayerSettings()
         pal.fieldName = 'format_number("altitude", 0)'
         pal.isExpression = True
-        try:
-            pal.placement = QgsPalLayerSettings.Placement.Line
-        except AttributeError:
-            pal.placement = QgsPalLayerSettings.Line
+        pal.placement = Qgis.LabelPlacement.Line
         fmt = QgsTextFormat()
         fmt.setSize(7)
         fmt.setColor(_qcolor("#5a3a1a"))
