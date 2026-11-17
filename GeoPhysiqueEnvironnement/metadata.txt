@@ -1,7 +1,7 @@
 [general]
 name=GeoPhysique & Environnement
 description=Analyses topographiques, morphométriques, géomorphologiques et hydrologiques dans QGIS : bassins et sous-bassins versants, profils, cartes et statistiques.
-version=2.0.0
+version=2.0.1
 author=Allaye GUINDO
 email=guindo.allaye.contact@gmail.com
 qgisMinimumVersion=3.34
@@ -15,6 +15,8 @@ repository=https://github.com/guindoallayecontact7/geophysique-environnement-qgi
 tracker=https://github.com/guindoallayecontact7/geophysique-environnement-qgis/issues
 tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,catchment,morphometry,geomorphology,curvature,twi,strahler,profile
 changelog=
+    2.0.1
+    - Version stable : l'extension n'est plus marquée expérimentale.
     2.0.0
     - Panneau en 12 rubriques ; traitements en tâche de fond avec progression, annulation et journal.
     - Moteur hydrologique natif : comblement complet ou limité en profondeur, D8, MFD, D-Infinity, réseau, Strahler, Shreve.
@@ -35,5 +37,5 @@ changelog=
     - Ajout de la licence GPL-2.0 et des liens vers le dépôt et le suivi des bogues.
     0.1.1
     - Panneau latéral, détection des rasters, raccourcis vers les algorithmes Processing.
-experimental=True
+experimental=False
 deprecated=False
