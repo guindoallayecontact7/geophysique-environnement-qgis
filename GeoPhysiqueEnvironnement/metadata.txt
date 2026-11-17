@@ -1,20 +1,30 @@
 [general]
 name=GeoPhysique & Environnement
-description=Boîte à outils scientifique QGIS pour la géographie physique, l'hydrologie et la morphométrie.
-version=0.1.3
+description=Analyses topographiques, morphométriques, géomorphologiques et hydrologiques dans QGIS : bassins et sous-bassins versants, profils, cartes et statistiques.
+version=2.0.0
 author=Allaye GUINDO
 email=guindo.allaye.contact@gmail.com
-qgisMinimumVersion=3.28
+qgisMinimumVersion=3.34
 qgisMaximumVersion=4.99
 supportsQt6=True
 category=Analysis
 icon=icons/plugin.svg
-about=Extension QGIS développée par Allaye GUINDO pour les analyses de géographie physique et environnementale, avec des outils de terrain, d'hydrologie et de morphométrie. Un panneau latéral ouvre, sur le MNT choisi, les algorithmes GDAL et GRASS de pente, d'exposition, d'ombrage, de courbes de niveau et d'hydrologie. Les résultats doivent être contrôlés avant interprétation scientifique.
+about=Extension QGIS d'Allaye GUINDO pour la géographie physique et l'environnement. À partir d'un MNT projeté, elle calcule pentes, expositions, ombrages, courbes de niveau, classes hypsométriques, courbures, indices TPI, TRI, VRM, TWI, SPI et LS, unités géomorphologiques (Weiss, Wood), comblement des dépressions, directions D8, MFD et D-Infinity, réseau hydrographique (Strahler, Shreve), bassins versants depuis un exutoire ou automatiquement, sous-bassins et paramètres morphométriques. Elle produit aussi des profils, des cartes mises en page et des statistiques exportables (TXT, CSV, Excel, PDF). Les calculs tournent en tâche de fond avec NumPy et SciPy fournis avec QGIS ; GRASS, SAGA et WhiteboxTools restent accessibles par raccourcis. Les résultats doivent être contrôlés avant interprétation scientifique.
 homepage=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 repository=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 tracker=https://github.com/guindoallayecontact7/geophysique-environnement-qgis/issues
-tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,morphometry,geomorphology
+tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,catchment,morphometry,geomorphology,curvature,twi,strahler,profile
 changelog=
+    2.0.0
+    - Panneau en 12 rubriques ; traitements en tâche de fond avec progression, annulation et journal.
+    - Moteur hydrologique natif : comblement complet ou limité en profondeur, D8, MFD, D-Infinity, réseau, Strahler, Shreve.
+    - Bassins versants depuis un exutoire (clic, coordonnées, couche) avec recalage contrôlé, ou détection automatique.
+    - Sous-bassins par confluences, ordre de Strahler, superficie minimale, seuil ou points de contrôle, avec contrôle topologique.
+    - Paramètres morphométriques documentés (forme, relief, réseau, temps de concentration estimés).
+    - Analyse topographique, indices morphométriques, courbures et classifications géomorphologiques.
+    - Profils topographiques et hydrographiques, comparaison et export PNG, SVG, PDF.
+    - Moteur de statistiques (TXT, CSV, Excel, fiche PDF) et moteur cartographique (mises en page, atlas) communs à tous les modules ; exportation globale.
+    - Raccourcis Processing de la version 0.1 conservés.
     0.1.3
     - Compatibilité Qt6 et QGIS 4 : énumérations Qt écrites sous leur forme complète.
     0.1.2

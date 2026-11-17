@@ -1,40 +1,53 @@
-# GeoPhysique & Environnement — extension QGIS
+# GeoPhysique & Environnement 2.0, extension QGIS
 
-Version : **0.1.3**.
+Version : **2.0.0**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
 
-**Auteur : Allaye GUINDO.** Cette extension ajoute un panneau QGIS et des raccourcis vers des algorithmes de terrain. Elle constitue un socle de développement, pas encore une suite hydrologique complète validée scientifiquement.
+L'extension réalise dans QGIS des analyses topographiques, morphométriques, géomorphologiques et hydrologiques à partir d'un MNT. Elle délimite les bassins et sous-bassins versants, trace des profils, produit des cartes mises en page et exporte ses statistiques.
 
 ## Compatibilité
-- QGIS 3.28 à 4.x (déclaré dans `metadata.txt`; tests requis sur la version exacte).
-- Python et PyQt fournis avec QGIS. Ne pas installer un Python externe pour exécuter le plugin.
-- Fournisseurs Processing GDAL et GRASS recommandés.
 
-## Installation manuelle
-1. Décompresser l'archive ZIP.
-2. Copier le dossier `GeoPhysiqueEnvironnement` dans le répertoire des extensions QGIS du profil utilisateur.
-3. Emplacement courant sous Windows : `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\GeoPhysiqueEnvironnement`.
-4. Dans QGIS : **Extensions > Installer/Gérer les extensions**, activer **GeoPhysique & Environnement**.
-5. Ouvrir **Extensions > GeoPhysique > GeoPhysique & Environnement** ou cliquer sur l'icône de la barre d'outils.
+- QGIS 3.34 à 4.x. Testée sur QGIS 3.44.12 (Qt 5.15) ; pas encore testée sous QGIS 4 / Qt6.
+- NumPy et SciPy, fournis avec QGIS, sont obligatoires. Matplotlib sert aux graphiques et openpyxl à l'export Excel (une écriture XLSX minimale prend le relais s'il manque).
+- GRASS, SAGA et WhiteboxTools sont facultatifs : le tableau de bord indique ceux qui sont actifs.
 
-Si le dossier `plugins` n'existe pas, le créer. Le profil QGIS peut avoir un autre nom que `default`; utiliser alors le dossier du profil actif.
+## Installation
 
-## Fonctionnalités
-- Panneau latéral intégré à QGIS.
-- Détection des couches raster valides dans le projet.
-- Raccourcis vers pente, exposition, ombrage, courbes de niveau et algorithmes hydrologiques disponibles.
-- Vérification de la disponibilité des fournisseurs et journal simple.
+Depuis QGIS : **Extensions > Installer depuis un ZIP**, puis ouvrir **Extensions > GeoPhysique > GeoPhysique & Environnement** ou cliquer sur l'icône de la barre d'outils.
 
-## Important : hydrologie
-Le bouton « Combler les cellules NoData » ouvre `gdal:fillnodata`, un algorithme destiné au comblement des cellules NoData; il ne remplit pas les dépressions hydrologiques. Pour préparer un MNT à l'analyse hydrologique, choisir un outil adapté, par exemple GRASS `r.fill.dir` si le fournisseur GRASS est disponible. `r.watershed` permet ensuite de calculer des paramètres de drainage et des bassins selon ses paramètres. Vérifier la documentation de l'algorithme et le résultat sur un petit bassin connu avant une utilisation scientifique.
+## Utilisation
 
-## Prochaines étapes de développement
-1. Ajouter une interface dédiée au prétraitement MNT : reprojection, contrôle des unités, correction des dépressions et masque d'étude.
-2. Développer un workflow hydrologique guidé : direction d'écoulement, accumulation, seuil de drainage, réseau hydrographique, exutoires et bassins versants.
-3. Calculer les indicateurs morphométriques : aire, périmètre, longueur, largeur, rapport de forme, coefficient de compacité, densité de drainage et ordre des cours d'eau.
-4. Générer un rapport HTML/PDF avec méthodes, paramètres, sources, cartes et limites.
-5. Ajouter tests automatiques et jeux de données de référence.
+Choisir le MNT en haut du panneau. Il doit être dans un SCR projeté en mètres ; sinon, la rubrique « Gestion des MNT » le reprojette en UTM. Chaque rubrique lance son calcul en tâche de fond, ajoute les couches stylées au projet dans le groupe « GeoPhysique & Environnement 2.0 » et propose la zone « Résultats – Statistiques – Exportation ».
 
-## Dépannage
-- Si l'extension n'apparaît pas, vérifier que le dossier du plugin contient directement `metadata.txt`, `__init__.py` et `plugin.py`.
-- Si GRASS n'est pas disponible, activer son fournisseur dans **Traitements > Options > Fournisseurs** et vérifier l'installation GRASS de QGIS.
-- Après une modification de code, désactiver/réactiver l'extension ou redémarrer QGIS.
+| Rubrique | Contenu |
+|---|---|
+| Tableau de bord | Moteurs disponibles, analyses de la session, exportation globale |
+| Gestion des MNT | Contrôles (SCR, unités, résolution, NoData, altitudes), reprojection UTM, découpage par masque |
+| Analyse topographique | Statistiques altimétriques, hypsométrie, pentes (° et %), classes FAO, expositions, ombrages, courbes de niveau, relief relatif, rugosité, ruptures de pente |
+| Analyse morphométrique | TPI, TRI, VRM, RSP fenêtrée, TWI, SPI, LS, intégrale hypsométrique locale, indice de dissection, unités morphométriques |
+| Analyse géomorphologique | 7 courbures, surfaces concaves et convexes, formes de versant, éléments de Wood, unités de Weiss, crêtes et talwegs |
+| Analyse hydrologique | Comblement des dépressions, directions D8, MFD, D-Infinity, accumulations, longueurs d'écoulement, convergence, réseau (Strahler, Shreve), confluences |
+| Bassins versants | Exutoire par clic, coordonnées ou couche de points, recalage optionnel ; délimitation automatique |
+| Sous-bassins versants | Confluences, ordre de Strahler, superficie minimale, seuil propre, points de contrôle ; relations amont-aval |
+| Profils topographiques | Tracé sur la carte, lignes d'une couche ou cours d'eau principal ; comparaison et exports |
+| Cartographie automatique | Cartes A4 avec titre, légende, échelle, nord, SCR, sources, méthode et date ; atlas PDF |
+| Statistiques | Consultation des tableaux, comparaison des bassins, exports |
+| Paramètres | Répertoire de sortie, séparateurs CSV, sources et mention de réalisation des cartes |
+
+Les méthodes, formules et références sont détaillées dans [docs/METHODES.md](docs/METHODES.md).
+
+## Points de vigilance
+
+- Le comblement complet supprime aussi les dépressions naturelles. L'option « limitée en profondeur » ou « aucune correction » les conserve.
+- Le seuil du réseau dépend de l'emprise et de la résolution : la valeur suggérée est un point de départ à ajuster.
+- La position de l'exutoire et le rayon de recalage changent le bassin obtenu. Sur le MNT de Wegnia, un recalage de 90 m place l'exutoire sur la branche du lac (402 km²) et un recalage de 200 m sur l'exutoire du bassin complet (1149 km²). Les deux exutoires, initial et corrigé, sont tracés pour le contrôle.
+- Les temps de concentration (Kirpich, Giandotti) sont des estimations empiriques.
+
+## Tests
+
+```bash
+python-qgis-ltr.bat GeoPhysiqueEnvironnement/tests/test_core.py
+python-qgis-ltr.bat GeoPhysiqueEnvironnement/tests/test_workflows.py <mnt.tif> <dossier>
+python-qgis-ltr.bat GeoPhysiqueEnvironnement/tests/test_gui.py <mnt.tif> <dossier> [x y]
+```
+
+`test_core.py` vérifie notamment que le comblement donne exactement le résultat d'un Priority-Flood de référence et que les trois méthodes d'accumulation conservent les volumes.

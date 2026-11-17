@@ -1,6 +1,6 @@
 # GeoPhysique & Environnement (extension QGIS)
 
-Extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie. Elle ajoute un panneau latéral qui détecte les rasters du projet et ouvre sur le MNT choisi les algorithmes de pente, d'exposition, d'ombrage, de courbes de niveau (GDAL) et d'hydrologie (GDAL `fillnodata`, GRASS `r.watershed`).
+Extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie (version 2.0). À partir d'un MNT, elle calcule les produits topographiques, morphométriques et géomorphologiques, route les écoulements (D8, MFD, D-Infinity), délimite bassins et sous-bassins avec leurs paramètres morphométriques, trace des profils et exporte cartes et statistiques. Le détail des rubriques est dans le [README de l'extension](GeoPhysiqueEnvironnement/README.md) et les formules dans [docs/METHODES.md](GeoPhysiqueEnvironnement/docs/METHODES.md).
 
 L'extension est expérimentale. Contrôlez les résultats avant toute interprétation scientifique.
 
@@ -10,7 +10,7 @@ Depuis QGIS : **Extensions > Installer/Gérer les extensions**, cocher « Affich
 
 Installation manuelle : télécharger le zip de la dernière version dans l'onglet *Releases*, puis **Extensions > Installer depuis un ZIP**.
 
-QGIS 3.28 ou plus récent est requis, QGIS 4 compris. Les fournisseurs Processing GDAL et GRASS doivent être activés.
+QGIS 3.34 ou plus récent est requis (QGIS 4 déclaré compatible, non testé). NumPy et SciPy, fournis avec QGIS, suffisent ; GRASS, SAGA et WhiteboxTools sont facultatifs.
 
 ## Contenu du dépôt
 
