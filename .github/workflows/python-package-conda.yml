@@ -24,4 +24,4 @@ jobs:
           flake8 GeoPhysiqueEnvironnement --count --exit-zero --max-line-length=127 --statistics
       - name: Tests du noyau de calcul
         # test_gui.py et test_workflows.py demandent QGIS : ils restent lancés en local.
-        run: pytest -v GeoPhysiqueEnvironnement/tests/test_core.py
+        run: pytest -v GeoPhysiqueEnvironnement/tests/test_core.py GeoPhysiqueEnvironnement/tests/test_acquisition.py

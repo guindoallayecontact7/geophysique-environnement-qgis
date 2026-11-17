@@ -22,6 +22,7 @@ Sélectionner le MNT en haut du panneau. Pour les calculs surfaciques, utiliser 
 | Rubrique | Contenu |
 |---|---|
 | Tableau de bord | Moteurs disponibles, analyses de la session, exportation globale |
+| Acquisition de données | Zone d'étude, recherche et téléchargement de MNT, Landsat, Sentinel et ALOS PALSAR, découpe et reprojection ([détails](docs/ACQUISITION.md)) |
 | Gestion des MNT | Contrôles SCR/unités/résolution/NoData, reprojection, découpage par masque |
 | Analyse topographique | Hypsométrie, pentes, expositions, ombrages, courbes de niveau, relief relatif |
 | Analyse morphométrique | TPI, TRI, VRM, RSP, TWI, SPI, LS et indices associés |

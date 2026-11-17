@@ -1,19 +1,27 @@
 [general]
 name=TGS - TerraGeo Science
 description=Analyses topographiques, morphométriques, géomorphologiques et hydrologiques dans QGIS : bassins et sous-bassins versants, profils, cartes et statistiques.
-version=2.1.2
+version=2.2.0
 author=Allaye GUINDO
 email=guindo.allaye.contact@gmail.com
 qgisMinimumVersion=3.34
 qgisMaximumVersion=4.99
 category=Analysis
 icon=icons/plugin.png
-about=Extension QGIS d'Allaye GUINDO pour la géographie physique et l'environnement. À partir d'un MNT projeté, elle calcule pentes, expositions, ombrages, courbes de niveau, classes hypsométriques, courbures, indices TPI, TRI, VRM, TWI, SPI et LS, unités géomorphologiques (Weiss, Wood), comblement des dépressions, directions D8, MFD et D-Infinity, réseau hydrographique (Strahler, Shreve), bassins versants depuis un exutoire ou automatiquement, sous-bassins et paramètres morphométriques. Elle produit aussi des profils, des cartes mises en page et des statistiques exportables (TXT, CSV, Excel, PDF). Les calculs tournent en tâche de fond avec NumPy et SciPy fournis avec QGIS ; GRASS, SAGA et WhiteboxTools restent accessibles par raccourcis. Les résultats doivent être contrôlés avant interprétation scientifique.
+about=Extension QGIS d'Allaye GUINDO pour la géographie physique et l'environnement. À partir d'un MNT projeté, elle calcule pentes, expositions, ombrages, courbes de niveau, classes hypsométriques, courbures, indices TPI, TRI, VRM, TWI, SPI et LS, unités géomorphologiques (Weiss, Wood), comblement des dépressions, directions D8, MFD et D-Infinity, réseau hydrographique (Strahler, Shreve), bassins versants depuis un exutoire ou automatiquement, sous-bassins et paramètres morphométriques. Une rubrique d'acquisition recherche et télécharge sur la zone d'étude des MNT (Copernicus DEM, SRTM, NASADEM, ASTER GDEM, ALOS AW3D30) et des images Landsat 4 à 9, Sentinel-1, 2 et 3 et ALOS PALSAR (Planetary Computer, Earth Search, Copernicus Data Space, ASF, NASA Earthdata, USGS), avec découpe et reprojection automatiques. Elle produit aussi des profils, des cartes mises en page et des statistiques exportables (TXT, CSV, Excel, PDF). Les calculs tournent en tâche de fond avec NumPy et SciPy fournis avec QGIS ; GRASS, SAGA et WhiteboxTools restent accessibles par raccourcis. Les résultats doivent être contrôlés avant interprétation scientifique.
 homepage=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 repository=https://github.com/guindoallayecontact7/geophysique-environnement-qgis
 tracker=https://github.com/guindoallayecontact7/geophysique-environnement-qgis/issues
-tags=hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,catchment,morphometry,geomorphology,curvature,twi,strahler,profile
+tags=download,sentinel,landsat,stac,copernicus,srtm,hydrology,dem,terrain,slope,aspect,hillshade,contour,watershed,catchment,morphometry,geomorphology,curvature,twi,strahler,profile
 changelog=
+    2.2.0
+    - Nouvelle rubrique « Acquisition de données » : recherche et téléchargement de MNT et d'images satellitaires sur la zone d'étude.
+    - Zone d'étude par fichier vectoriel, rectangle dessiné, emprise de la carte ou du MNT, coordonnées GPS ou entités sélectionnées.
+    - MNT : Copernicus DEM 30 et 90 m, NASADEM, SRTM GL1, ASTER GDEM, ALOS AW3D30. Images : Landsat 4 à 9, Sentinel-1, 2 et 3, ALOS PALSAR.
+    - Catalogues : Microsoft Planetary Computer, Earth Search, Copernicus Data Space, ASF Vertex, NASA Earthdata, USGS M2M.
+    - Filtres par période, nuages, couverture de la zone, type et résolution ; emprises sur la carte et métadonnées.
+    - Lecture de la seule zone d'étude pour les sources COG, mosaïque des dalles de MNT, découpe et reprojection (projet ou UTM).
+    - Téléchargements en tâche de fond, reprise des fichiers interrompus, journal et métadonnées enregistrés.
     2.1.2
     - Logo TGS - TerraGeo Science affiché en tête du tableau de bord.
     2.1.1

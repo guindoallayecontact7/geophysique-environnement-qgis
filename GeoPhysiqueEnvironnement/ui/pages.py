@@ -971,5 +971,7 @@ class SettingsPage(Page):
         self.dock.log("Cache de calcul vidé.")
 
 
-PAGES = [DashboardPage, DemPage, TopographyPage, MorphometryPage, GeomorphologyPage, HydrologyPage, BasinsPage,
+from .acquisition_page import AcquisitionPage  # noqa: E402 - dépend de Page défini plus haut
+
+PAGES = [DashboardPage, AcquisitionPage, DemPage, TopographyPage, MorphometryPage, GeomorphologyPage, HydrologyPage, BasinsPage,
          SubBasinsPage, ProfilesPage, CartographyPage, StatisticsPage, SettingsPage]

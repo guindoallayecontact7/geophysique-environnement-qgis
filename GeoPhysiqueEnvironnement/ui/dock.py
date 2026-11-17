@@ -29,6 +29,7 @@ PREFERRED_WIDTH = 820  # largeur à l'ouverture
 DEFAULT_SETTINGS = {
     "workspace": os.path.join(os.path.expanduser("~"), "GeoPhysique_Environnement"),
     "csv_separator": ";", "decimal": ",", "precision": 4, "source": "", "author": "",
+    "auth_cdse": "", "auth_earthdata": "", "auth_usgs": "",
 }
 
 
@@ -480,6 +481,9 @@ class MainDock(QDockWidget):
     def cleanup(self):
         if self.task is not None:
             self.task.cancel()
+        for page in self.pages.values():
+            if hasattr(page, "cleanup"):
+                page.cleanup()
         canvas = self.iface.mapCanvas()
         if self._tool is not None and canvas.mapTool() is self._tool:
             canvas.unsetMapTool(self._tool)

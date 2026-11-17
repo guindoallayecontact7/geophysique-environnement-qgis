@@ -10,3 +10,4 @@ dependencies:
   - gdal
   - flake8
   - pytest
+  - requests

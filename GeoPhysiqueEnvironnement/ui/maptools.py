@@ -83,3 +83,50 @@ class LineTool(QgsMapTool):
     def deactivate(self):
         self.reset()
         super().deactivate()
+
+
+try:
+    _POLY = Qgis.GeometryType.Polygon
+except (NameError, AttributeError):  # QGIS < 3.30
+    from qgis.core import QgsWkbTypes as _W
+    _POLY = getattr(_W, "PolygonGeometry")
+
+
+class RectTool(QgsMapTool):
+    """Rectangle tiré à la souris (appui, glisser, relâcher) : émet un QgsRectangle (coordonnées du canevas)."""
+
+    finished = pyqtSignal(object)
+
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.setCursor(Qt.CursorShape.CrossCursor)
+        self.start = None
+        self.band = QgsRubberBand(canvas, _POLY)
+        self.band.setColor(QColor(227, 26, 28, 60))
+        self.band.setStrokeColor(QColor(227, 26, 28))
+        self.band.setWidth(2)
+
+    def _rect(self, p):
+        from qgis.core import QgsRectangle
+        return QgsRectangle(self.start, QgsPointXY(p))
+
+    def canvasPressEvent(self, e):
+        if e.button() == Qt.MouseButton.LeftButton:
+            self.start = QgsPointXY(e.mapPoint())
+
+    def canvasMoveEvent(self, e):
+        if self.start is not None:
+            self.band.setToGeometry(QgsGeometry.fromRect(self._rect(e.mapPoint())), None)
+
+    def canvasReleaseEvent(self, e):
+        if e.button() != Qt.MouseButton.LeftButton or self.start is None:
+            return
+        r = self._rect(e.mapPoint())
+        self.start = None
+        self.band.reset(_POLY)
+        if r.width() > 0 and r.height() > 0:
+            self.finished.emit(r)
+
+    def deactivate(self):
+        self.band.reset(_POLY)
+        super().deactivate()

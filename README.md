@@ -4,7 +4,7 @@
 
 Anciennement GeoPhysique & Environnement, puis TERRA-MORPHO GIS. Le dossier technique `GeoPhysiqueEnvironnement` est conservé.
 
-TGS - TerraGeo Science, extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie. À partir d'un MNT, elle calcule les produits topographiques, morphométriques et géomorphologiques, route les écoulements (D8, MFD, D-Infinity), délimite bassins et sous-bassins avec leurs paramètres morphométriques, trace des profils et exporte cartes et statistiques. Le détail des rubriques est dans le [README de l'extension](GeoPhysiqueEnvironnement/README.md) et les formules dans [docs/METHODES.md](GeoPhysiqueEnvironnement/docs/METHODES.md).
+TGS - TerraGeo Science, extension QGIS d'Allaye GUINDO pour la géographie physique, l'hydrologie et la morphométrie. À partir d'un MNT, elle calcule les produits topographiques, morphométriques et géomorphologiques, route les écoulements (D8, MFD, D-Infinity), délimite bassins et sous-bassins avec leurs paramètres morphométriques, trace des profils et exporte cartes et statistiques. Elle peut aussi rechercher et télécharger sur la zone d'étude des MNT (Copernicus DEM, SRTM, NASADEM, ASTER GDEM, ALOS) et des images Landsat, Sentinel et ALOS PALSAR : voir [docs/ACQUISITION.md](GeoPhysiqueEnvironnement/docs/ACQUISITION.md). Le détail des rubriques est dans le [README de l'extension](GeoPhysiqueEnvironnement/README.md) et les formules dans [docs/METHODES.md](GeoPhysiqueEnvironnement/docs/METHODES.md).
 
 Contrôlez les résultats avant toute interprétation scientifique.
 
