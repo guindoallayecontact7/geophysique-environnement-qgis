@@ -119,7 +119,7 @@ def run(params, ctx, fb):
     if "directions" in prods:
         pth = write_raster(os.path.join(out, "directions_d8.tif"), codes, grid, "uint8", 0)
         res.add_layer(LayerSpec(pth, "Directions d'écoulement (D8)",
-                                style=S.classes_style(["{} ({})".format(l, c) for l, c in zip(DIR_LABELS, D8_CODES)],
+                                style=S.classes_style(["{} ({})".format(lab, c) for lab, c in zip(DIR_LABELS, D8_CODES)],
                                                       S.ASPECT_COLORS[1:], codes=list(D8_CODES)),
                                 map_key="directions", map_title="Carte des directions d'écoulement"))
 

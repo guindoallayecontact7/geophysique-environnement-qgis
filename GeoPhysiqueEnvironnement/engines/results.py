@@ -122,14 +122,15 @@ class ResultRegistry:
     def __init__(self):
         self._items = []
         self.listeners = []
+        self.listener_errors = []
 
     def add(self, result):
         self._items.append(result)
         for cb in list(self.listeners):
             try:
                 cb(result)
-            except Exception:  # noqa: BLE001 - un écouteur défaillant ne doit pas bloquer
-                pass
+            except Exception as exc:  # noqa: BLE001 - un écouteur défaillant ne doit pas bloquer
+                self.listener_errors.append(str(exc))
 
     def all(self):
         return list(self._items)

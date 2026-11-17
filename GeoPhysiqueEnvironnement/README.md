@@ -1,6 +1,6 @@
 # GeoPhysique & Environnement 2.0, extension QGIS
 
-Version : **2.0.1**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
+Version : **2.0.2**. Auteur : Allaye GUINDO. Licence GPL-2.0 ou ultérieure.
 
 L'extension réalise dans QGIS des analyses topographiques, morphométriques, géomorphologiques et hydrologiques à partir d'un MNT. Elle délimite les bassins et sous-bassins versants, trace des profils, produit des cartes mises en page et exporte ses statistiques.
 

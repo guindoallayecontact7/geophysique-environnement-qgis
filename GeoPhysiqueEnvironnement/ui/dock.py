@@ -332,7 +332,9 @@ class MainDock(QDockWidget):
 
     # ------------------------------------------------------------------ résultats
     def show_stats(self, result):
-        TableDialog(result, self).exec()
+        dlg = TableDialog(result, self)
+        dlg.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
+        dlg.open()
 
     def _ask_dir(self, sub):
         start = os.path.join(self.ctx.workspace, sub)

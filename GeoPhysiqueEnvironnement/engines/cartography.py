@@ -141,7 +141,7 @@ def _add_page(layout, spec, page, project):
     layout.addLayoutItem(m)
     m.attemptMove(QgsLayoutPoint(MAP_X, MAP_Y), page=page)
     m.attemptResize(QgsLayoutSize(MAP_W, MAP_H))
-    layers = [l for l in spec.layers if l is not None]
+    layers = [lyr for lyr in spec.layers if lyr is not None]
     m.setLayers(layers)
     m.setKeepLayerSet(True)
     if layers:
@@ -149,8 +149,8 @@ def _add_page(layout, spec, page, project):
     ext = spec.extent
     if ext is None:
         ext = QgsRectangle()
-        for l in layers:
-            e = l.extent()
+        for lyr in layers:
+            e = lyr.extent()
             if not e.isEmpty():
                 if ext.isEmpty():
                     ext = QgsRectangle(e)
@@ -171,9 +171,9 @@ def _add_page(layout, spec, page, project):
     leg.setAutoUpdateModel(False)
     root = leg.model().rootGroup()
     root.removeAllChildren()
-    for l in spec.legend_layers:
-        if l is not None:
-            root.addLayer(l)
+    for lyr in spec.legend_layers:
+        if lyr is not None:
+            root.addLayer(lyr)
     _style_legend(leg)
     layout.addLayoutItem(leg)
     leg.attemptMove(QgsLayoutPoint(SIDE_X, MAP_Y), page=page)
@@ -182,10 +182,10 @@ def _add_page(layout, spec, page, project):
     except AttributeError:
         pass
     n_items = 0
-    for l in spec.legend_layers:
-        if l is not None:
+    for lyr in spec.legend_layers:
+        if lyr is not None:
             try:
-                n_items += len(l.renderer().legendSymbolItems())
+                n_items += len(lyr.renderer().legendSymbolItems())
             except Exception:  # noqa: BLE001 - rasters : pas de symboles vectoriels
                 n_items += 6
     if n_items > 16:

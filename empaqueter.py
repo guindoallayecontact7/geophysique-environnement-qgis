@@ -5,7 +5,8 @@ import zipfile
 
 RACINE = pathlib.Path(__file__).resolve().parent
 DOSSIER = "GeoPhysiqueEnvironnement"
-EXCLUS = {"__pycache__", ".git", ".DS_Store", "Thumbs.db"}
+# Les tests restent dans le dépôt mais ne sont pas distribués (assert, chemins de test).
+EXCLUS = {"__pycache__", ".git", ".DS_Store", "Thumbs.db", "tests"}
 
 
 def main():

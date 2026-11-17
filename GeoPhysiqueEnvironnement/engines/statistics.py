@@ -10,7 +10,7 @@ import datetime
 import math
 import os
 import zipfile
-from xml.sax.saxutils import escape
+from html import escape as _escape
 
 import numpy as np
 
@@ -239,10 +239,10 @@ def write_xlsx(result_or_tables, path, info_rows=None):
             [("Analyse", res.title), ("Module", res.module_title),
              ("Date", res.created.strftime("%d/%m/%Y %H:%M")), ("MNT", res.dem_source),
              ("SCR", res.crs), ("Résolution", res.resolution)]
-            + [(l, v) for l, v in res.inputs]
-            + [("Paramètre : " + l, "{}{}".format(v, " " + u if u else "")) for l, v, u in res.params]
-            + [("Résultat : " + l, "{}{}".format(fmt(v) if not isinstance(v, str) else v, " " + u if u else ""))
-               for l, v, u in res.summary])
+            + [(lab, v) for lab, v in res.inputs]
+            + [("Paramètre : " + lab, "{}{}".format(v, " " + u if u else "")) for lab, v, u in res.params]
+            + [("Résultat : " + lab, "{}{}".format(fmt(v) if not isinstance(v, str) else v, " " + u if u else ""))
+               for lab, v, u in res.summary])
     else:
         tables = result_or_tables
         info_rows = info_rows or []
@@ -308,7 +308,7 @@ def _write_xlsx_minimal(path, sheets):
         z.writestr("xl/workbook.xml",
                    '<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
                    'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'
-                   + "".join('<sheet name="{}" sheetId="{}" r:id="rId{}"/>'.format(escape(n, {'"': "&quot;"}), i + 1, i + 1) for i, n in enumerate(names))
+                   + "".join('<sheet name="{}" sheetId="{}" r:id="rId{}"/>'.format(_escape(n, quote=True), i + 1, i + 1) for i, n in enumerate(names))
                    + "</sheets></workbook>")
         z.writestr("xl/_rels/workbook.xml.rels",
                    '<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
@@ -324,7 +324,7 @@ def _write_xlsx_minimal(path, sheets):
                     if isinstance(v, (int, float)) and not isinstance(v, bool):
                         xml.append('<c r="{}"><v>{}</v></c>'.format(ref, v))
                     elif v is not None:
-                        xml.append('<c r="{}" t="inlineStr"><is><t>{}</t></is></c>'.format(ref, escape(str(v))))
+                        xml.append('<c r="{}" t="inlineStr"><is><t>{}</t></is></c>'.format(ref, _escape(str(v), quote=False)))
                 xml.append("</row>")
             xml.append("</sheetData></worksheet>")
             z.writestr("xl/worksheets/sheet{}.xml".format(si + 1), "".join(xml))
