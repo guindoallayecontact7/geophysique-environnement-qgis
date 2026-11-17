@@ -1,0 +1,12 @@
+# Environnement des tests automatiques (GitHub Actions).
+# Le noyau de calcul n'a besoin que de NumPy, SciPy et GDAL, fournis par QGIS.
+name: tgs-tests
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - gdal
+  - flake8
+  - pytest
