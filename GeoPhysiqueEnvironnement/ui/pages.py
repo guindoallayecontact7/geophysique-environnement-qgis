@@ -86,7 +86,14 @@ class DashboardPage(Page):
     key, caption = "dashboard", "Tableau de bord"
 
     def build(self):
-        from ..plugin import plugin_version
+        from ..plugin import plugin_version, PLUGIN_DIR
+        from qgis.PyQt.QtGui import QPixmap
+        logo = QPixmap(os.path.join(PLUGIN_DIR, "icons", "terra_geo_science_logo.png"))
+        if not logo.isNull():
+            lab = QLabel()
+            lab.setPixmap(logo.scaledToWidth(380, Qt.TransformationMode.SmoothTransformation))
+            lab.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            self.lay.addWidget(lab)
         self.lay.addWidget(note(
             "TGS - TerraGeo Science {} - Allaye GUINDO. Analyses topographiques, morphométriques, "
             "géomorphologiques et hydrologiques à partir d'un MNT projeté en mètres. Sélectionnez le MNT en haut "
